@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use D2L\DataHub\Application;
+use D2L\DataHub\Repository\ContainerDefinitionRepository;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$_ENV['BASE_DIR'] = realpath(__DIR__ . '/../');
+
+(new Application(
+    new ContainerDefinitionRepository($_ENV['BASE_DIR'] . '/.env')
+))->run();
